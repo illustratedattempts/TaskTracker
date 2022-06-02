@@ -28,7 +28,9 @@ private:
     Ui::TaskTracker *ui;
     QList<QListWidgetItem*> tasks; // Highly suggested by https://stackoverflow.com/questions/6602036/qvector-vs-qlist
 
+private slots:
     void addData();
     void deleteData();
+    void showContextMenu(const QPoint &pos);
 };
 #endif // TASKTRACKER_H

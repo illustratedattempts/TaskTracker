@@ -21,7 +21,11 @@ TaskTracker::TaskTracker(QWidget *parent)
     connect(inputForm, &QDialog::accepted, this, &TaskTracker::addData);
 
     // QListWidget, let's try to add a context menu to it
+    ui->listWidget->setContextMenuPolicy(Qt::CustomContextMenu);
+    connect(ui->listWidget, &QWidget::customContextMenuRequested, this, &TaskTracker::showContextMenu);
 
+    //*TASK 1* When the user check marks the item, I want the item to then be moved to the List View
+    //*TASK 2* After the item is moved to ListView, we can allow the user to bring back the item
 
 }
 
@@ -39,6 +43,17 @@ void TaskTracker::addData()
     some_task->setCheckState(Qt::Unchecked);
     ui->listWidget->addItem(some_task);
     tasks.append(some_task);
+}
+
+void TaskTracker::showContextMenu(const QPoint &pos)
+{
+    QPoint globalPos = ui->listWidget->mapToGlobal(pos);
+
+    QMenu myMenu;
+    myMenu.addAction("Something", this, &TaskTracker::deleteData);
+    myMenu.addAction("Hello", this, &TaskTracker::deleteData);
+
+    myMenu.exec(globalPos);
 }
 
 // Meant for deletion of task
