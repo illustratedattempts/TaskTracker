@@ -8,6 +8,7 @@
 #include <QAbstractButton>
 #include <QLabel>
 #include <QListWidgetItem>
+#include <QStringListModel>
 
 #include "dialog.h"
 
@@ -27,10 +28,13 @@ public:
 private:
     Ui::TaskTracker *ui;
     QList<QListWidgetItem*> tasks; // Highly suggested by https://stackoverflow.com/questions/6602036/qvector-vs-qlist
+    QStringListModel* model;
 
 private slots:
     void addData();
     void deleteData();
+    void taskChecked(QListWidgetItem* item);
+
     void showContextMenu(const QPoint &pos);
 };
 #endif // TASKTRACKER_H
