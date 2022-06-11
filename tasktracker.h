@@ -30,11 +30,15 @@ private:
     QList<QListWidgetItem*> tasks; // Highly suggested by https://stackoverflow.com/questions/6602036/qvector-vs-qlist
     QStringListModel* model;
 
+    void placeBackTask(QString task);
+    void deleteFromListView(int row);
+
 private slots:
     void addData();
     void deleteData();
     void taskChecked(QListWidgetItem* item);
 
-    void showContextMenu(const QPoint &pos);
+    void showContextMenu_listWidget(const QPoint &pos);
+    void showContextMenu_listView(const QPoint &pos);
 };
 #endif // TASKTRACKER_H
