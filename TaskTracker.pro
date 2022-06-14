@@ -10,15 +10,18 @@ CONFIG += c++11
 
 SOURCES += \
     dialog.cpp \
+    editform.cpp \
     main.cpp \
     tasktracker.cpp
 
 HEADERS += \
     dialog.h \
+    editform.h \
     tasktracker.h
 
 FORMS += \
     dialog.ui \
+    editform.ui \
     tasktracker.ui
 
 # Default rules for deployment.

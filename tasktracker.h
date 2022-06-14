@@ -9,8 +9,10 @@
 #include <QLabel>
 #include <QListWidgetItem>
 #include <QStringListModel>
+#include <QMessageBox>
 
 #include "dialog.h"
+#include "editform.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class TaskTracker; }
@@ -24,6 +26,7 @@ public:
     TaskTracker(QWidget *parent = nullptr);
     ~TaskTracker();
     Dialog *inputForm;
+    EditForm *editForm;
 
 private:
     Ui::TaskTracker *ui;
@@ -32,10 +35,11 @@ private:
 
     void placeBackTask(QString task);
     void deleteFromListView(int row);
+    void setNewTaskName(const EditForm &form);
 
 private slots:
     void addData();
-    void deleteData();
+    void deleteTask(QListWidgetItem* item);
     void taskChecked(QListWidgetItem* item);
 
     void showContextMenu_listWidget(const QPoint &pos);
